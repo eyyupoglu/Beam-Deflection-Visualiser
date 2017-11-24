@@ -7,7 +7,7 @@ def input_number(prompt):
 
 
     except ValueError:
-        print("Type in a valid number!")
+        print("Type in a valid number!\n>>")
         return 0
     return choice
 
@@ -21,9 +21,9 @@ def display_menu(options):
     choice=0
 
     while not(np.any(choice==np.arange(len(options))+1)):
-       choice=input_number("Choose an option")
+       choice=input_number("Choose an option\n>>")
        if not (np.any(choice==np.arange(len(options))+1)):
-            print("Please choose one of the options")
+            print("Please choose one of the options\n>>")
 
 
 

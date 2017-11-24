@@ -4,10 +4,10 @@ import math
 
 E = 200*(10**9)
 I= 0.001
-beam_length= float(input("enter the beam length please"))
+"""beam_length= float(input("enter the beam length please"))
 interval_from_the_user= float(input("enter interval"))
 
-positions = np.arange(0,beam_length+interval_from_the_user,interval_from_the_user)
+positions = np.arange(0,beam_length+interval_from_the_user,interval_from_the_user)"""
 
 
 def formula_both_1(W, l, E, I, a, x):
@@ -41,4 +41,4 @@ def beamDeflection(positions, beamLength, loadPosition, loadForce,beamSupport):
             i = i + 1
         return deflection
 
-test_1 = beamDeflection(np.arange(0,11,1), 10, 1,  50, 1)
+#test_1 = beamDeflection(np.arange(0,11,1), 10, 1,  50, 1)

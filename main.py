@@ -2,6 +2,11 @@ import matplotlib.pyplot as plt # Import the matplotlib.pyplot module
 
 import numpy as np
 from display_menu import *
+from errors import *
+from choice2 import *
+from choice3 import *
+from choice4 import *
+from choice5 import *
 
 
 main_menu = np.array(["Configure beam",
@@ -11,24 +16,37 @@ main_menu = np.array(["Configure beam",
                       "Generate plot",
                       "Quit"])
 conf_load_menu=np.array(["Add load",
-                         "Remove load"])
+                         "Remove all loads",
+                         "Remove one load"])
+
+beamtype_array= np.array(["both ends",
+                         "Cantilever"])
+
+
+load_positions=np.zeros(100)
+load_forces=np.zeros(100)
+beam_length=10
+beam_type=1
+i = 0
+
+
+
 
 while True:
+    print("--------------------------------------------------------")
+    print("Length of the beam is ", beam_length)
+    print("Type of the beam is", beamtype_array[beam_type-1],"\n\n")
     choice=display_menu(main_menu)
-    beam_length=10
-    beam_type=1
-    load_positions=np.zeros(1)
-    load_forces=np.zeros(1)
-    i=0
 
-    if choice==1:
-        beam_length=input("Please enter thelength of the beam")
-        beam_type=input("Please enter the beam support type")
-    elif choice==2:
-        if np.any(load_positions):
-            print(load_forces," at ", load_positions)
-        if display_menu(conf_load_menu)==1:
-            load_forces[i]=float(input("The magnitude of the load?"))
-            load_position[i]=float(input("The location of the load?"))
-            i=i+1
-
+    if choice == 1:
+        beam_length,beam_type = choice1(beam_length,beam_type)
+    elif choice == 2:
+        load_positions, load_forces, i = choice2(load_positions, load_forces, conf_load_menu, i)
+    elif choice==3:
+        save(beam_length, beam_type, load_positions, load_forces)
+    elif choice==4:
+        load_forces,load_positions,beam_length,beam_type=load()
+    elif choice==5:
+        beamPlot(beam_length,load_positions, load_forces,beam_type)
+    elif choice==6:
+        break

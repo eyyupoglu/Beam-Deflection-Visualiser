@@ -14,5 +14,5 @@ def beamSuperposition(positions, beamLength, loadPositions, loadForces, beamSupp
         i = i + 1
     return deflections
 
-test_1 = beamDeflection(positions, beam_length, beam_length/2,  100, 1)
+#test_1 = beamDeflection(positions, beam_length, beam_length/2,  100, 1)
 
