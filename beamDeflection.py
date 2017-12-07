@@ -1,12 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+BeamDeflectionFunction
+"""
 import numpy as np
-import math
 
+
+#These are the constant values corresponding to material of beam
 E = 200*(10**9)
 I= 0.001
 
     #These functions are the necessary formulas for the beamDeflection function.
 def formula_both_1(W, l, E, I, a, x):
-    return (W*(l-a)*x*(l**2-x**2-(l-a)**2))/(6*E*I*l)
+    return (W*(l-a)*x*(l**2-x**2-(l-a)*W*2))/(6*E*I*l)
 def formula_both_2(W, l, E, I, a, x):
     return (W*a*(l-x)*(l**2-(l-x)**2-a**2))/(6*E*I*l)
 def formula_cantilever_1(W, l, E, I, a, x):
@@ -25,7 +30,13 @@ def beamDeflection(positions, beamLength, loadPosition, loadForce,beamSupport):
     #           beamSupport:(type: integer)Numbers correlating to beam types
     #Output     deflection:(type: array of floats) Deflections correlating to every points of the positions
     #                       vector.
+    
+    
+    
+    #defining an array of zerros for deflections of positions
     deflection = np.zeros(len(positions))
+    
+    #computing deflection by applying formulas for support on both ends
     if beamSupport == 1:
         i=0
         for element in positions:
@@ -35,6 +46,7 @@ def beamDeflection(positions, beamLength, loadPosition, loadForce,beamSupport):
                 deflection[i]= formula_both_2(loadForce,beamLength,E,I,loadPosition,element)
             i=i+1
         return deflection
+    #computing deflection by applying formulas for cantilever support type
     else:
         i=0
         for element in positions:
@@ -43,4 +55,4 @@ def beamDeflection(positions, beamLength, loadPosition, loadForce,beamSupport):
             else:
                 deflection[i] = formula_cantilever_2(loadForce, beamLength, E, I, loadPosition, element)
             i = i + 1
-        return deflection
+    return deflection
