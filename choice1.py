@@ -1,3 +1,9 @@
+from display_menu import *
+choice1_options=np.array(["For both end support type beam",
+                         "For cantilever type beam",
+                         "For quitting to the main menu",
+                         ])
+
 def beam_type_error(beam_type):
     if beam_type != 1 and beam_type != 2:
         print("Please type a valid beam type")
@@ -12,6 +18,7 @@ def beam_length_error(beam_length):
 
 
 def choice1(beam_length, beam_type):
+    print("*************************************CONFIGURE BEAM*******************************************")
     while True:
         try:
             beam_length = float(input("Please enter the length of the beam\n>>"))
@@ -22,8 +29,12 @@ def choice1(beam_length, beam_type):
             print("Please type a valid beam length because it seems like you typed negative number\n")
             continue
         while True:
-            try:
-                beam_type = int(input("Please enter the beam support type\n>>"))
+            print("Please choose the beam support type\n")
+            
+            button = display_menu(choice1_options)
+            if button==3 : break #ESCAPE
+            try: 
+                beam_type=int(button)
             except:
                 print("This is not a valid option.\n>>")
                 continue

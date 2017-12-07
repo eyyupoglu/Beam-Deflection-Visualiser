@@ -63,7 +63,7 @@ while True:
     
     #loading files into the programm and assign the variables accordingly
     elif choice==4:
-        load_forces,load_positions,beam_length,beam_type=load()
+        load_forces,load_positions,beam_length,beam_type=load(load_forces,load_positions,beam_length,beam_type)
 
     #plotting the the beam and beam deflection in a graph with loads
     elif choice==5:
