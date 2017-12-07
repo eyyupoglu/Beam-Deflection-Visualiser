@@ -1,7 +1,7 @@
 from display_menu import *
 choice1_options=np.array(["For both end support type beam",
                          "For cantilever type beam",
-                         "For quitting to the main menu",
+                         "Quit",
                          ])
 
 def beam_type_error(beam_type):

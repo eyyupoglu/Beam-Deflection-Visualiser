@@ -40,36 +40,42 @@ while True:
     print("*************************************MAIN MENU*******************************************")
     print("*  Length of the beam is ", beam_length)
     print("*  Type of the beam is", beamtype_array[beam_type-1],"\n\n")
-    print("********************************************************")
-    #checking loadpositions and forces according to beamlenght (see fct regular check)
+    print("*****************************************************************************************")
+     #checking loadpositions and forces according to beamlenght (see fct regular check)
     load_positions, load_forces=regular_check(load_positions, load_forces, beam_length)
     display_forces(load_positions,load_forces)
     
     #display menu to user and assing user's choice to variable choice(see fct display menu)
     choice=display_menu(main_menu)
-    clear_screen()
+    
     
     #changing beamlenght and support type and reassigning variables beam_lenght and support type
     if choice == 1:
+        clear_screen()
         beam_length,beam_type = choice1(beam_length,beam_type)
         
     #changing forces and postions and reassigning variables load_forces and load_positions     
     elif choice == 2:
+        clear_screen()
         load_positions, load_forces, i = choice2(load_positions, load_forces, conf_load_menu, i, beam_length)
         
     #saving loads, their forces, beam support type and length in a file 
     elif choice==3:
+        clear_screen()
         save_file(beam_length, beam_type, load_positions, load_forces)
     
     #loading files into the programm and assign the variables accordingly
     elif choice==4:
+        clear_screen()
         load_forces,load_positions,beam_length,beam_type=load(load_forces,load_positions,beam_length,beam_type)
 
     #plotting the the beam and beam deflection in a graph with loads
     elif choice==5:
+        clear_screen()
         plot_type_oriented(beam_length,load_positions, load_forces,beam_type)
 
     #quitting the programm
     elif choice==6:
+        clear_screen()
         print("Bye,Tschüss and Görüsürüz! Have a delightful day!")
         break
